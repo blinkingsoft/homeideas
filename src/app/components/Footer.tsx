@@ -12,7 +12,7 @@ const Footer = () => {
               <Link 
               href="/">
                 <div className="flex items-center mb-6">
-                  <img src="/assets/images/logo.svg" className='w-[200px] lg:w-[330px]' alt="" />
+                  <img src="/assets/images/logo.jpeg" className='w-[200px] lg:w-[330px]' alt="Home Ideas Logo" />
                 </div>
               </Link>
               
@@ -79,7 +79,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a 
-                    href="https://www.instagram.com/hit_furnish/"
+                    href="https://www.instagram.com/thehomeideas9/"
                     target='_blank'
                     className="hover:text-gray-900 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a 
-                    href="https://www.linkedin.com/in/vinoth-s-b22203377/"
+                    href="https://www.linkedin.com/company/112437856/admin/dashboard/"
                     target='_blank' 
                     className="hover:text-gray-900 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a 
-                    href="https://youtube.com/@hitfurnish?si=YFIEZprKagifSyRbhttps://youtube.com/@hitfurnish?si=YFIEZprKagifSyRb"
+                    href="https://www.youtube.com/channel/UCj0CvnMogG2rdAiTumVIVOQ"
                     target='_blank' 
                     className="hover:text-gray-900 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">

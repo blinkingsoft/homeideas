@@ -39,7 +39,7 @@ export default function Navigation() {
             href="/">
               <div className="flex-shrink-0">
                 <img
-                  src="/assets/images/logo.svg"
+                  src="/assets/images/logo.jpeg"
                   alt="Home Ideas Logo"
                   className="w-[120px] sm:w-[150px]"
                 />

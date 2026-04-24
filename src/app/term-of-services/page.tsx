@@ -276,9 +276,14 @@ export default function TermsConditionsPage() {
                   <p className="text-gray-600">Speak with our support team</p>
                 </div>
               </div>
-              <a href="tel:+917200240860" className="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-                +91 72002 40860
-              </a>
+              <div className="space-y-1">
+                <a href="tel:+917200240860" className="block text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                  +91 72002 40860
+                </a>
+                <a href="tel:+919884348052" className="block text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                  +91 98843 48052
+                </a>
+              </div>
             </div>
           </div>
 
@@ -292,17 +297,21 @@ export default function TermsConditionsPage() {
               </div>
             </div>
             <address className="text-gray-600 not-italic">
-              <a 
-                href="https://maps.app.goo.gl/JU9XXXdJoKhLH2N76" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-orange-500 transition-colors"
-              >
+              <p className="mb-4">
+                <span className="font-semibold text-gray-900">Operations:</span><br />
+                Home Ideas Technologies Pvt Ltd<br />
+                Coxbit F14, TN Startup Hub<br />
+                Gate No. 12, TNAU Campus<br />
+                Lawley Road, Coimbatore, Tamil Nadu - 641003<br />
+                India
+              </p>
+              <p>
+                <span className="font-semibold text-gray-900">Head Office:</span><br />
                 Home Ideas Technologies<br />
                 102, 20, Eden Park, Vittal Mallya Rd, KG Halli, D' Souza Layout,<br />
-                Ashok Nagar, Bengaluru, Karnataka - 560001,<br />
+                Ashok Nagar, Bengaluru, Karnataka - 560001<br />
                 India
-              </a>
+              </p>
             </address>
           </div>
         </div>

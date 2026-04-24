@@ -233,9 +233,14 @@ export default function PrivacyPolicyPage() {
                   <p className="text-gray-600">Speak with our privacy team</p>
                 </div>
               </div>
-              <a href="tel:+917200240860" className="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-                +91 72002 40860
-              </a>
+              <div className="space-y-1">
+                <a href="tel:+917200240860" className="block text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                  +91 72002 40860
+                </a>
+                <a href="tel:+919884348052" className="block text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                  +91 98843 48052
+                </a>
+              </div>
             </div>
           </div>
         </div>

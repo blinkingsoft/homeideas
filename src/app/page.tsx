@@ -217,7 +217,7 @@
                     {/* Central Hub */}
                     <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white rounded-xl flex items-center justify-center shadow-lg">
                       <img 
-                        src="/assets/images/hi-logo.svg" 
+                        src="/assets/images/logo.jpeg" 
                         alt="Logo" 
                         className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 object-contain"
                       />

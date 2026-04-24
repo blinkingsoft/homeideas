@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { ChevronDown, Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { ChevronDown, Mail, Phone, MapPin } from 'lucide-react'
 import Navigation from '../components/Nav'
 import Footer from '../components/Footer'
 import Link from 'next/link'
@@ -76,7 +76,7 @@ export default function ContactPage() {
               {
                 icon: Phone,
                 title: "Call Us",
-                info: "+91 72002 40860",
+                info: "+91 72002 40860 / +91 98843 48052",
                 subtitle: "Mon-Fri 9am-6pm",
                 href: "tel:+917200240860"
               },
@@ -90,9 +90,21 @@ export default function ContactPage() {
               {
                 icon: MapPin,
                 title: "Visit Us",
-                info: "102, 20, Eden Park, Vittal Mallya Rd, KG Halli, D' Souza Layout, Ashok Nagar, Bengaluru,Karnataka 560001",
-                subtitle: "Schedule an appointment",
-                href: "https://maps.app.goo.gl/JU9XXXdJoKhLH2N76"
+                operationsAddress: [
+                  "Home Ideas Technologies Pvt Ltd",
+                  "Coxbit F14, TN Startup Hub",
+                  "Gate No. 12, TNAU Campus",
+                  "Lawley Road, Coimbatore, Tamil Nadu - 641003",
+                  "India"
+                ],
+                headOfficeAddress: [
+                  "Home Ideas Technologies",
+                  "102, 20, Eden Park, Vittal Mallya Rd",
+                  "KG Halli, D' Souza Layout, Ashok Nagar",
+                  "Bengaluru, Karnataka - 560001",
+                  "India"
+                ],
+                href: "https://maps.google.com/?q=TN+Startup+Hub+Gate+No+12+TNAU+Campus+Lawley+Road+Coimbatore+Tamil+Nadu+641003"
               }
             ].map((item, index) => (
               <Link key={index} href={item.href} target='_blank' className="bg-white rounded-2xl p-6 shadow-lg 
@@ -102,8 +114,35 @@ export default function ContactPage() {
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-900 font-semibold mb-1">{item.info}</p>
-                <p className="text-gray-600 text-sm">{item.subtitle}</p>
+                {item.title === "Visit Us" ? (
+                  <div className="w-full mt-2 text-left space-y-4">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-600 mb-1">
+                        Operations
+                      </p>
+                      {item.operationsAddress?.map((line, lineIndex) => (
+                        <p key={`ops-${lineIndex}`} className="text-sm leading-6 text-gray-800">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500 mb-1">
+                        Head Office
+                      </p>
+                      {item.headOfficeAddress?.map((line, lineIndex) => (
+                        <p key={`hq-${lineIndex}`} className="text-sm leading-6 text-gray-700">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-gray-900 font-semibold mb-1">{item.info}</p>
+                    <p className="text-gray-600 text-sm">{item.subtitle}</p>
+                  </>
+                )}
               </Link>
             ))}
           </div>
