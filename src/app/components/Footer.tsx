@@ -1,7 +1,39 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 const Footer = () => {
+  const [email, setEmail] = useState('')
+  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!email.trim()) {
+      alert('Please enter a valid email address')
+      return
+    }
+
+    setIsLoading(true)
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    setIsSubscribed(true)
+    setShowSuccess(true)
+    setEmail('')
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      setShowSuccess(false)
+      setIsSubscribed(false)
+    }, 3000)
+    
+    setIsLoading(false)
+  }
+
   return (
     <>
       <footer className="bg-white border-t border-gray-200 py-16 relative overflow-hidden">        
@@ -20,16 +52,47 @@ const Footer = () => {
                 Join our newsletter to stay up to date on features and releases.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-4 w-full max-w-xl">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 mb-4 w-full max-w-xl">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 text-gray-900 placeholder-gray-500 transition-all"
+                  disabled={isLoading || isSubscribed}
                 />
-                <button className="px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg hover:bg-yellow-500 transition-colors">
-                  Subscribe
+                <button 
+                  type="submit"
+                  disabled={isLoading || isSubscribed}
+                  className={`px-6 py-3 font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
+                    isSubscribed
+                      ? 'bg-green-500 text-white'
+                      : 'bg-yellow-400 text-gray-900 hover:bg-yellow-500 disabled:bg-gray-400'
+                  }`}
+                >
+                  {isLoading ? (
+                    <span className="animate-spin">⏳</span>
+                  ) : isSubscribed ? (
+                    <>
+                      <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                      Subscribed
+                    </>
+                  ) : (
+                    'Subscribe'
+                  )}
                 </button>
-              </div>
+              </form>
+
+              {showSuccess && (
+                <div className="animate-fade-in-up mb-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
+                  <svg className="w-6 h-6 text-green-500 flex-shrink-0 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-green-700 font-semibold">Thanks for subscribing! Check your email for updates.</span>
+                </div>
+              )}
 
               <p className="text-sm text-gray-500">
                 By subscribing you agree to with our{' '}
@@ -55,7 +118,7 @@ const Footer = () => {
                 <ul className="space-y-3 text-gray-600">
                   <li>
                     <a 
-                    href="https://www.facebook.com/profile.php?id=61578805979244" 
+                    href="https://www.facebook.com/share/17HQa5LQ5B/" 
                     target='_blank'
                     className="hover:text-gray-900 flex items-center">
                       <svg 

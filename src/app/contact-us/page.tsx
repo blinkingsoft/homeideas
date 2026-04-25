@@ -70,13 +70,13 @@ export default function ContactPage() {
 
       {/* Contact Info Cards */}
       <section className="py-12 -mt-8 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Phone,
                 title: "Call Us",
-                info: "+91 72002 40860 / +91 98843 48052",
+                info: ["+91 72002 40860", "+91 98843 48052"],
                 subtitle: "Mon-Fri 9am-6pm",
                 href: "tel:+917200240860"
               },
@@ -89,57 +89,62 @@ export default function ContactPage() {
               },
               {
                 icon: MapPin,
-                title: "Visit Us",
-                operationsAddress: [
+                title: "Operations",
+                label: "OPERATIONS",
+                address: [
                   "Home Ideas Technologies Pvt Ltd",
                   "Coxbit F14, TN Startup Hub",
                   "Gate No. 12, TNAU Campus",
                   "Lawley Road, Coimbatore, Tamil Nadu - 641003",
                   "India"
                 ],
-                headOfficeAddress: [
+                href: "https://maps.google.com/?q=TN+Startup+Hub+Gate+No+12+TNAU+Campus+Lawley+Road+Coimbatore+Tamil+Nadu+641003"
+              },
+              {
+                icon: MapPin,
+                title: "Head Office",
+                label: "HEAD OFFICE",
+                address: [
                   "Home Ideas Technologies",
                   "102, 20, Eden Park, Vittal Mallya Rd",
                   "KG Halli, D' Souza Layout, Ashok Nagar",
                   "Bengaluru, Karnataka - 560001",
                   "India"
                 ],
-                href: "https://maps.google.com/?q=TN+Startup+Hub+Gate+No+12+TNAU+Campus+Lawley+Road+Coimbatore+Tamil+Nadu+641003"
+                href: "https://maps.google.com/?q=102+20+Eden+Park+Vittal+Mallya+Rd+Bengaluru+Karnataka+560001"
               }
             ].map((item, index) => (
               <Link key={index} href={item.href} target='_blank' className="bg-white rounded-2xl p-6 shadow-lg 
               hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border 
-              border-gray-100 flex flex-col  items-center text-center ">
+              border-gray-100 flex flex-col items-center text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                {item.title === "Visit Us" ? (
-                  <div className="w-full mt-2 text-left space-y-4">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-600 mb-1">
-                        Operations
+                {item.address ? (
+                  <div className="w-full mt-2 text-left">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-600 mb-2">
+                      {item.label}
+                    </p>
+                    {item.address.map((line, lineIndex) => (
+                      <p key={`addr-${lineIndex}`} className="text-sm leading-6 text-gray-700">
+                        {line}
                       </p>
-                      {item.operationsAddress?.map((line, lineIndex) => (
-                        <p key={`ops-${lineIndex}`} className="text-sm leading-6 text-gray-800">
-                          {line}
-                        </p>
-                      ))}
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500 mb-1">
-                        Head Office
-                      </p>
-                      {item.headOfficeAddress?.map((line, lineIndex) => (
-                        <p key={`hq-${lineIndex}`} className="text-sm leading-6 text-gray-700">
-                          {line}
-                        </p>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 ) : (
                   <>
-                    <p className="text-gray-900 font-semibold mb-1">{item.info}</p>
+                    {Array.isArray(item.info) ? (
+                      <div className="space-y-1">
+                        {item.info.map((line, lineIndex) => (
+                          <p key={`info-${lineIndex}`} className="text-gray-900 font-semibold">
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-900 font-semibold mb-1">{item.info}</p>
+                    )}
                     <p className="text-gray-600 text-sm">{item.subtitle}</p>
                   </>
                 )}
